@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monkey Bar Menu Items</title>
+</head>
+<body>
+    <h1>Welcome To The Monkey Bar</h1>
+    <h3>Please choose your order:</h3>
+    <ul>
+        {% for item in menu_items %}
+            <li>{{ item.product_title }} - {{ item.product_description }} - ${{ item.product_cost }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+
+        <select name="customer_select" id="customer_select">
+            {% for item in menu_items %}
+                <option value="{{ item.id }}">{{ item.product_title }}</option>
+            {% endfor %}
+        </select>
+        <label for="customer_select">Selected Item:</label>
+
+        <br>
+        <select name="monkey_select" id="monkey_select">
+            {% for monkey in monkeys %}
+                <option value="{{ monkey.id }}">{{ monkey.name }}</option>
+            {% endfor %}
+        </select>
+        <label for="monkey_select">Selected Your Waiter</label>
+        <br>
+        <input type="submit" value="Send Order">
+    </form>
+    <br>
+    <h3>Best seller is -- {{ best_seller.0 }} -- with -- {{ best_seller.1 }} -- units sold!</h3>
+</body>
+</html>
