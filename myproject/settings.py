@@ -16,7 +16,6 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = "django-insecure-aid!0^su=m)c7vm*zprcqwua8e-s8gt=+7uupg9@=@u_pnh!_$
 DEBUG = True
 
 ALLOWED_HOSTS = ['asd-2jmi.onrender.com']
-
 
 # Application definition
 
@@ -73,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "myproject.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -84,7 +81,6 @@ DATABASES = {
         conn_max_age=600
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -104,7 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -116,20 +111,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Enable the WhiteNoise storage backend
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
