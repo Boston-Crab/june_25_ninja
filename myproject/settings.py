@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-aid!0^su=m)c7vm*zprcqwua8e-s8gt=+7uupg9@=@u_pnh!_$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['asd-2jmi.onrender.com']
+ALLOWED_HOSTS = ['asd-2jmi.onrender.com', '127.0.0.1']
 
 # Application definition
 
@@ -81,6 +81,18 @@ DATABASES = {
         conn_max_age=600
     )
 }
+
+if os.environ.get("GITHUB_WORKFLOW"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "monkey_bar_25",
+            "USER": "postgres",
+            "PASSWORD": "postgres",
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
