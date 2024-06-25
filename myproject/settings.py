@@ -53,7 +53,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
-ROOT_URLCONF = "cloud.urls"
+ROOT_URLCONF = "myproject.urls"
 
 TEMPLATES = [
     {
